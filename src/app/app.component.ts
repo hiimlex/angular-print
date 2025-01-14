@@ -302,11 +302,26 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.showCanvas = true;
     this.showPreview = true;
 
-    const canvas = this.canvasRef.nativeElement;
-    const ctx = canvas.getContext('2d')!;
+    this.cdr.detectChanges();
+    this.cdr.markForCheck();
 
-    const img = new Image();
-    img.src = this.b64ToCrop;
+    setTimeout(() => {
+      const canvas = this.canvasRef.nativeElement;
+      const ctx = canvas.getContext('2d')!;
+
+      if (this.cropEvent.objectUrl) {
+        const img = new Image();
+        img.src = this.cropEvent.objectUrl;
+
+        img.onload = () => {
+          ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+          this.addActionStack('crop');
+
+          this.canvasMode = undefined;
+        };
+      }
+    });
   }
 
   // Draw print image on canvas
