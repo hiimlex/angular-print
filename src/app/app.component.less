@@ -1,0 +1,143 @@
+::ng-deep body {
+  margin: 0 !important;
+  outline: none;
+  font-family: Helvetica, sans-serif;
+  box-sizing: border-box;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  border: none;
+}
+
+::ng-deep * {
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+button {
+  background: white;
+  color: black;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 8px;
+
+  &:hover {
+    background: #f0f0f0;
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 24px;
+  background: #202937;
+  height: 100%;
+  width: 100%;
+  gap: 24px;
+
+  &-capture {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .canvas {
+    position: absolute;
+    z-index: 4;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none;
+  }
+
+  // .canvas-test {
+  //   position: absolute;
+  //   left: 0;
+  //   top: 0;
+  //   z-index: 6;
+  // }
+
+  image-cropper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .canvas-wrapper {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    background: #252d3b;
+    z-index: 0;
+
+    -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none;
+    border-radius: 12px;
+
+    img {
+      border: 1px solid #6c7280;
+      border-radius: 12px;
+      display: block;
+    }
+  }
+
+  .actions {
+    width: fit-content;
+    background: #252d3b;
+    border-radius: 12px;
+    padding: 12px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 18px;
+
+    .action {
+      width: 42px;
+      height: 42px;
+      border-radius: 6px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(#6c7280, 0.2);
+      color: #6c7280;
+      transition: all 0.1s ease-in-out;
+      padding: 0;
+
+      &:hover {
+        cursor: pointer;
+        background: rgba(#6c7280, 0.4);
+      }
+
+      .icon {
+        width: 18px;
+        height: 18px;
+      }
+
+      &.active {
+        background: rgba(#69a6f9, 0.2);
+        color: #69a6f9;
+
+        &:hover {
+          background: rgba(#69a6f9, 0.4);
+        }
+      }
+
+      &:disabled {
+        background: rgba(#acacac, 0.4);
+        color: #313131;
+        cursor: not-allowed;
+      }
+    }
+  }
+}
